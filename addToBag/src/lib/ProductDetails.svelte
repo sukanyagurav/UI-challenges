@@ -31,19 +31,19 @@
     ],
   };
   const defaultImage = $state(0);
+  const defaultSize = $state('M');
 </script>
 
-<main>
-  <div class="product-images">
+<main class="product-details-container flex-row">
+  <div class="product-images flex-row">
     <div class="main-image">
-      <img src={product.images[defaultImage].imageUrl} alt="Product Image" />
-
+      <img src={product.images[defaultImage].imageUrl} alt={product.title} />
     </div>
     <div class="thumbnail-images">
       {#each product.images as image, index}
         <img
           src={image.imageUrl}
-          alt="Thumbnail Image"
+          alt="{product.title} - thumbnail {index + 1}"
           class:active={index === defaultImage}
         />
       {/each}
@@ -64,3 +64,12 @@
     </div>
   </div>
 </main>
+<style>
+    .product-details-container {
+     
+    }
+    .flex-row{
+        display: flex;
+        gap: 2rem;
+    }
+</style>
